@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+hardhat/node_modules/
+
+# Hardhat Build Artifacts & Cache
+hardhat/artifacts/
+hardhat/cache/
+hardhat/types/
+hardhat/dist/
+hardhat/bundle/
+hardhat/coverage/
+hardhat/.gas-snapshot
+hardhat/snapshots/
+
+# Environment files
+*.env
+*.env.*
+!*.env.example
+
+# Geth chain data & sockets
+network/geth/
+network/*.ipc
+*.ipc
+
+# OS & Logs
+.DS_Store
+*.log
