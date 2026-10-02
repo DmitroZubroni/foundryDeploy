@@ -31,30 +31,21 @@ export default buildModule("ProtocolModule", (m) => {
   });
 
   // Общие параметры спецификации Protogen2.0
-  const usdtCost = 100n;
-  const usd1Cost = 100n;
-  const usdcCost = 100n;
-  const daiCost = 100n;
   const currentBorrowIndex = 1_000_000_000_000_000_000n; // 1 * 1e18
   const version = 1n;
 
   // 4. Инициализация и деплой Proxy для Market1 (залог: USDT, заём: USDC)
-  // Title: "Market1", Share name: "shareMarket1", LLTV: 75%, InterestRate: 317 * 1e8
+  // Title: "Market1", LLTV: 75%, InterestRate: 317 * 1e8
   const initDataMarket1 = m.encodeFunctionCall(
     marketImpl,
     "init",
     [
-      usdtCost,
-      usd1Cost,
-      usdcCost,
-      daiCost,
       currentBorrowIndex,
       "Market1",
-      "shareMarket1",
       75n, // 75%
       vaultUSDC,
       admin,
-      31_700_000_000n, // 317 * 1e8
+      317n, // 317 (* 1e8 inside init)
       usdt,
       usdc,
       version,
@@ -67,22 +58,17 @@ export default buildModule("ProtocolModule", (m) => {
   });
 
   // 5. Инициализация и деплой Proxy для Market2 (залог: USD1, заём: USDC)
-  // Title: "Market2", Share name: "shareMarket2", LLTV: 80%, InterestRate: 500 * 1e8
+  // Title: "Market2", LLTV: 80%, InterestRate: 500 * 1e8
   const initDataMarket2 = m.encodeFunctionCall(
     marketImpl,
     "init",
     [
-      usdtCost,
-      usd1Cost,
-      usdcCost,
-      daiCost,
       currentBorrowIndex,
       "Market2",
-      "shareMarket2",
       80n, // 80%
       vaultUSDC,
       admin,
-      50_000_000_000n, // 500 * 1e8
+      500n, // 500 (* 1e8 inside init)
       usd1,
       usdc,
       version,
@@ -95,22 +81,17 @@ export default buildModule("ProtocolModule", (m) => {
   });
 
   // 6. Инициализация и деплой Proxy для Market3 (залог: DAI, заём: USDC)
-  // Title: "Market3", Share name: "shareMarket3", LLTV: 85%, InterestRate: 350 * 1e8
+  // Title: "Market3", LLTV: 85%, InterestRate: 350 * 1e8
   const initDataMarket3 = m.encodeFunctionCall(
     marketImpl,
     "init",
     [
-      usdtCost,
-      usd1Cost,
-      usdcCost,
-      daiCost,
       currentBorrowIndex,
       "Market3",
-      "shareMarket3",
       85n, // 85%
       vaultUSDC,
       admin,
-      35_000_000_000n, // 350 * 1e8
+      350n, // 350 (* 1e8 inside init)
       dai,
       usdc,
       version,

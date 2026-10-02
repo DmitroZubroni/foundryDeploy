@@ -8,10 +8,6 @@ contract MyProxy is TransparentUpgradeableProxy{
 
     // same params order as Market
     string public title;
-    uint public USDT_UCDC_cost;
-    uint public USD1_USDC_cost;
-    uint public USDC_USD_cost;
-    uint public DAI_USDC_cost; 
     uint public LLTV;
     uint public blocksPerYear;
     uint public lastAccureBlock;
@@ -19,12 +15,14 @@ contract MyProxy is TransparentUpgradeableProxy{
     uint public InterestRate;
     address public vault;
     address public admin;
+    uint public borrowPrice;
+    uint public collateralPrice;
+    uint public WAD;
+    uint public precition;
     Token public collateralToken;
     Token public borrowToken;
     Share public collateralShare;
     Share public borrowShare;
-    uint public borrowPrice;
-    uint public collateralPrice;
     mapping (address => uint) public userBorrowIndexAtEntry;
 
     constructor(address impl, bytes memory data) TransparentUpgradeableProxy(impl, msg.sender, data) payable {}
