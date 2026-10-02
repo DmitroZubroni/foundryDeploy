@@ -62,6 +62,11 @@ export default defineConfig({
       url: "http://127.0.0.1:8545",
       accounts: "remote", // либо массив приватных ключей ["0x..."]
     },
+    geth: {
+      type: "http",
+      url: "http://127.0.0.1:8545",
+      accounts: "remote",
+    },
   },
   ignition: {
     requiredConfirmations: 1,
