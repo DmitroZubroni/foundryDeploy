@@ -10,12 +10,7 @@ contract Vault is ERC4626 {
     string title;
     uint assets;
 
-    constructor(
-        Token assetToken_,
-        string memory title_,
-        string memory shareName_,
-        string memory shareSymbol_
-    ) ERC4626(IERC20(assetToken_)) ERC20(shareName_, shareSymbol_) {
+    constructor(Token assetToken_, string memory title_) ERC4626(IERC20(assetToken_)) ERC20(assetToken_.name(), assetToken_.symbol()) {
         title = title_;
         assetToken = assetToken_;
         assetToken.mint(address(this), 10000 * 10 ** assetToken.decimals());

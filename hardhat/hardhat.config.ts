@@ -44,7 +44,6 @@ export default defineConfig({
     },
     localhost: {
       type: "http",
-      chainType: "l1",
       url: "http://127.0.0.1:8545",
       accounts: "remote", // либо массив приватных ключей ["0x..."]
     },

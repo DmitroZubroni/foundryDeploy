@@ -15,13 +15,13 @@ export default buildModule("ProtocolModule", (m) => {
   const dai = m.contract("DAI", [user1, user2, user3]);
 
   // 2. Деплой Vault 1 и Vault 2
-  // Vault 1: Title "Vault1", Share name "profiUSDC1", базовый токен USDC, APY 10%
-  const vaultUSDC = m.contract("Vault", [usdc, "Vault1", "profiUSDC1", "profiUSDC1"], {
+  // Vault 1: Title "Vault1", базовый токен USDC, APY 10%
+  const vaultUSDC = m.contract("Vault", [usdc, "Vault1"], {
     id: "VaultUSDC",
   });
 
-  // Vault 2: Title "Vault 2", Share name "profiUSDC2", базовый токен PryUSD, APY 10%
-  const vaultPryUSD = m.contract("Vault", [pryUsd, "Vault 2", "profiUSDC2", "profiUSDC2"], {
+  // Vault 2: Title "Vault 2", базовый токен PryUSD, APY 10%
+  const vaultPryUSD = m.contract("Vault", [pryUsd, "Vault 2"], {
     id: "VaultPryUSD",
   });
 
