@@ -11,4 +11,5 @@ echo "yes" | npx hardhat ignition deploy ignition/modules/Protocol.ts --network 
 
 # 3. Запуск фронтенда
 cd ../front
+[ ! -d "node_modules" ] && npm install
 npm run dev
