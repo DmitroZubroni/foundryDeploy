@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 hardhat/node_modules/
+front/node_modules/
+front/dist/
 
 # Hardhat Build Artifacts & Cache
 hardhat/artifacts/

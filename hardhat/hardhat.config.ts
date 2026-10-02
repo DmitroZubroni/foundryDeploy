@@ -1,8 +1,20 @@
 import hardhatToolboxMochaEthersPlugin from "@nomicfoundation/hardhat-toolbox-mocha-ethers";
-import { configVariable, defineConfig } from "hardhat/config";
+import { configVariable, defineConfig, overrideTask } from "hardhat/config";
+import { definePlugin } from "hardhat/plugins";
+
+const syncFrontendPlugin = definePlugin({
+  id: "sync-frontend-plugin",
+  npmPackage: null,
+  dependencies: () => [import("@nomicfoundation/hardhat-ignition")],
+  tasks: [
+    overrideTask(["ignition", "deploy"])
+      .setAction(() => import("./scripts/deploy-task-action.js"))
+      .build(),
+  ],
+});
 
 export default defineConfig({
-  plugins: [hardhatToolboxMochaEthersPlugin],
+  plugins: [hardhatToolboxMochaEthersPlugin, syncFrontendPlugin],
   solidity: {
     profiles: {
       default: {
