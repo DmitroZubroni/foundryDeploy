@@ -10,9 +10,6 @@ const syncFrontendPlugin = definePlugin({
     overrideTask(["ignition", "deploy"])
       .setAction(() => import("./scripts/deploy-task-action.js"))
       .build(),
-    overrideTask("compile")
-      .setAction(() => import("./scripts/compile-task-action.js"))
-      .build(),
   ],
 });
 

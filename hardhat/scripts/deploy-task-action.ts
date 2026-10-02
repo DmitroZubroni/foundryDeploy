@@ -1,12 +1,11 @@
-import { syncToFrontend } from "./sync-frontend.js";
+import { syncAddresses } from "./sync-addresses.js";
 
 export default async function deployAction(args: any, hre: any, runSuper: any) {
   const result = await runSuper(args);
   try {
-    console.log("\n[Sync] Auto-propagating deployed contract addresses to frontend...");
-    syncToFrontend(args?.deploymentId);
+    syncAddresses();
   } catch (e) {
-    console.warn("[Sync] Failed to auto-sync to frontend:", e);
+    console.warn("[Sync] Failed to sync addresses to frontend:", e);
   }
   return result;
 }
